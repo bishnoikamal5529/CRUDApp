@@ -8,3 +8,11 @@
     min-height: 100vh;
     min-width: 100vw;
 }
+
+.width-adjust{
+    min-width: 90vw;
+}
+
+.minvw{
+    min-width: 50vw;
+}

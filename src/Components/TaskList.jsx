@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useContext } from "react";
 import { TaskContext } from "../Context/TaskContext";
-
 import { ListGroup, Form } from "react-bootstrap";
+import "../Styles/Additional.css";
 
 function TaskList(){
 
@@ -56,17 +56,18 @@ function TaskList(){
     }
 
     return <ListGroup className="d-flex justify-content-center align-items-center overflow-hidden"> {tasks.map(task => {
-        return <ListGroup.Item className="mt-2 w-75 d-flex justify-content-evenly align-items-center overflow-auto" action key={task.id} variant={task.done?"danger":"primary"}>
+        return <ListGroup.Item className="mt-2 width-adjust d-flex justify-content-evenly align-items-center overflow-auto flex-column flex-md-row" action key={task.id} variant={task.done?"danger":"primary"}>
+            <section className="w-auto minvw d-block">
             {task.updating?
             <Form.Control 
-            className=" w-50 font-monospace text-capitalize text-decoration-underline"
+            className="d-inline-block w-75 font-monospace text-capitalize text-decoration-underline"
             name="updatingProgress"
             id="updatingProgress" 
             value={updateInput}
             onChange={(e) => handleUpdateInput(e)}
             />
             : 
-            <section className="w-50">
+            <section className="d-inline-block">
                 <p className=" d-inline-block p-0 m-0 font-monospace text-capitalize text-decoration-underline">{task.text}</p>
             </section>
             }
@@ -78,7 +79,8 @@ function TaskList(){
             checked={task.done}
             onChange={() => handleCheckbox(task.id)}
             />
-
+            </section>
+            <section className="d-block">
             <input 
             className="btn btn-warning mx-2"
             type="button" 
@@ -95,7 +97,7 @@ function TaskList(){
             name="DeleteTask"
             id="delete"
             onClick={() => handleDelete(task.id)}
-            />
+            /> </section>
         </ListGroup.Item> })}
         </ListGroup>
    
