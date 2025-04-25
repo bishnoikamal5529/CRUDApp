@@ -1,0 +1,10 @@
+
+
+.override{
+    height: fit-content;
+}
+
+.adjust-size{
+    min-height: 100vh;
+    min-width: 100vw;
+}
